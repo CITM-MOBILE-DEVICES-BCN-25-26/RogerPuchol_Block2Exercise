@@ -1,7 +1,7 @@
-SOLID Principle(s) broken: (SO__D) Single responsibility, Open-close, Dependency inversion
+SOLID Principle(s) broken: (SO___) Single responsibility, Open-close
 
 Problem:
-- All rewards are managed from RewardSystem, requiring their entire logic to be implemented within the class (SO__D)
+- All rewards are managed from RewardSystem, requiring their entire logic to be implemented within the class (SO___)
 
 My solution:
 - IReward interface, implemented by each type of reward. RewardSystem holds a dictionary of possible rewards, and does nothing if asked for a non-existent reward
