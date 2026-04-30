@@ -1,0 +1,10 @@
+SOLID Principle(s) broken: (__LI_) Liskov's substitution, Interface segregation
+
+Problem:
+- Multiple entities are derived from GameEntity, but not all should have the same capabilities (___I_)
+    - Thus, those entities that don't implement these behaviors violate Liskov's Substitution Principle (__L__)
+
+My solution (better, but not ideal):
+- Put movement declaration into the IMovable interface which is only implemented by entities that should be able to move
+- Added a check in MoveEntity so that it only tries to move GameEntity objects that implement IMovable
+    - This might not be a good solution if done frequently, as frequent casting of variables can lower performance

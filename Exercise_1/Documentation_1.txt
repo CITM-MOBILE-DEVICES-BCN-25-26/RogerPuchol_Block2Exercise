@@ -1,0 +1,15 @@
+SOLID Principle(s) broken: (SO__D) Single responsibility, Open-close, Dependency inversion
+
+Problem:
+- The MatchSummary class should only build the summary, but it does (almost) the entire match data management (SO___)
+
+My solution (and why it's better):
+- All functions that are not "summarizing the match" are moved to separate classes or interfaces
+    - As MatchSummary now only formats the metrics passed to it, it's been renamed to "MatchSummaryFormatter"
+- MatchSummaryFormatter (former MatchSummary) now takes an array of IMetrics to build the summary structure (solves Open-closed)
+    - Each metric is defined separately to allow for easier control of how the summary is structured
+    - This method allows adding/removing metrics without the need to change the MatchSummary code
+- Match data moved to a separate class (not struct so it can be passed around without implicitly copying)
+- Exporters are derived from a common interface to solve Dependency inversion principle
+
+This could be improved my isolating write access to MatchData from outside a MatchManager class (or similar) to prevent editing its data from IMetric-related calls

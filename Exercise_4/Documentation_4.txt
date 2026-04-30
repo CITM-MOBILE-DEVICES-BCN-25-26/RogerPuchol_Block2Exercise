@@ -1,0 +1,12 @@
+SOLID Principle(s) broken: (__LI_) Interface segregation
+
+Problem:
+- Some UI elements don't need to implement behaviors they're not meant to (___I_)
+    - Just like in exercise 3, if there was any code that asked for the general IUIElement it would violate Liskov's Substitution Principle (__L__)
+
+My solution:
+- Each behavior is instead its own interface, and every UI element type implements only what it needs
+    - This avoids unnecessary code, improves code intent and makes code more readable when there's more possibly unneeded behaviors
+    - Also allows the event system to only iterate the relevant UI elements instead of all of them
+- IUIElement is no longer in use, but it could be repurposed as a base abstract class for common UI data
+

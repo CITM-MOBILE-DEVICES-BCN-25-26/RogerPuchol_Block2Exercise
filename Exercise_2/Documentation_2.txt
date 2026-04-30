@@ -1,0 +1,15 @@
+SOLID Principle(s) broken: (SO___) Single responsibility, Open-close
+
+Problems:
+- The skill system is responsible for what every skill does (S____)
+- The skill system needs to be edited every time a new skill is to be added (_O___)
+
+My solution:
+- Use the Strategy design pattern to make each skill a separate item passed to the SkillSystem
+- SkillSystem stores a dictionary of skills. If the skill in the parameter skillType doesn't exist within said dictionary, the baseDamage parameter is returned as-is
+
+Why is it better? Extensible without the need to touch SkillSystem and still works with invalid skills (though working as a "default skill fallback"
+
+How could it be improved?
+- Skills may apply lasting effects, so it might be a better idea to pass Character objects (or other relevant object) as parameters to hold the appropriate data from activated skills
+    - Example: FireSkill may burn the target, leaving them with a StatusEffect instance on them

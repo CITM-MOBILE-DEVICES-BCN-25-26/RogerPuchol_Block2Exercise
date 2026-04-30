@@ -1,0 +1,14 @@
+SOLID Principle(s) broken: (SO__D) Single responsibility, Open-close, Dependency inversion
+
+Problem:
+- All rewards are managed from RewardSystem, requiring their entire logic to be implemented within the class (SO__D)
+
+My solution:
+- IReward interface, implemented by each type of reward. RewardSystem holds a dictionary of possible rewards, and does nothing if asked for a non-existent reward
+
+Why it's better? To create new reward types you just have to implement them in their own class and add them to the creation of the reward system
+
+How could it be improved?
+- Use unique identifiers to allow duplicate rewards of the same type, but with different data in them
+    - Example: Two ItemReward, each with a different item (or an entire loot table, depends on implementation). This would require keeping track of the unique IDs
+- Use a different way to identify rewards instead of a simple string, which can cause problems if it's not copied exactly
